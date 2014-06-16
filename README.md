@@ -1,5 +1,8 @@
 # JewelSeed
 
+[![Gem Version](https://badge.fury.io/rb/jewel_seed.svg)](http://badge.fury.io/rb/jewel_seed)
+[![Build Status](https://travis-ci.org/sinsoku/jewel_seed.svg?branch=master)](https://travis-ci.org/sinsoku/jewel_seed)
+
 JewelSeed migrate seed files. It is efficient, quick, and best seed manager for Rails.
 
 ## Installation

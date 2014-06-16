@@ -1,24 +1,58 @@
 # JewelSeed
 
-TODO: Write a gem description
+JewelSeed migrate seed files. It is efficient, quick, and best seed manager for Rails.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'jewel_seed'
+```ruby
+gem 'jewel_seed'
+```
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle install
+```
 
-Or install it yourself as:
-
-    $ gem install jewel_seed
+After running `bundle install`, setup databases for JewelSeed:
+```bash
+$ rake jseed:install
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Basic Usage
+
+Run the JewelSeed generator to add seed file:
+```bash
+$ rails g jseed InitUser
+```
+
+Then edit generated seed file, and migrate:
+```bash
+$ rake jseed:migrate
+```
+
+### Dump seeds & Load seeds
+
+Create `db/seeds/*.rb` files:
+```bash
+$ rake jseed:dump
+```
+
+And load seed files in `db/seeds/*.rb`:
+```bash
+$ rake jseed:load
+```
+
+### Rollback
+
+Rollback seed data:
+```
+$ rake jseed:rollback
+```
 
 ## Contributing
 

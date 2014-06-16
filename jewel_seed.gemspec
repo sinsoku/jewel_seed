@@ -8,15 +8,19 @@ Gem::Specification.new do |spec|
   spec.version       = JewelSeed::VERSION
   spec.authors       = ["sinsoku"]
   spec.email         = ["sinsoku.listy@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = 'JewelSeed is best seed manager for Rails'
+  spec.summary       = 'JewelSeed is best seed manager for Rails'
+  spec.homepage      = "https://github.com/sinsoku/jewel_seed"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "activesupport", "~> 4.0.0"
+  spec.add_dependency "activerecord", "~> 4.0.0"
+  spec.add_dependency "activerecord-import"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"

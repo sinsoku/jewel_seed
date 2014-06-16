@@ -1,7 +1,5 @@
 require 'spec_helper'
 
 describe JewelSeed do
-  it 'should have a version number' do
-    JewelSeed::VERSION.should_not be_nil
-  end
+  it { expect(JewelSeed::VERSION).to_not be_nil }
 end

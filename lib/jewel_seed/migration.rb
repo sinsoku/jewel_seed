@@ -1,9 +1,10 @@
 module JewelSeed
   class Migration
-    attr_reader :table_names
+    attr_reader :table_names, :seed_count
 
     def initialize
       @table_names = []
+      @seed_count = 0
     end
 
     def seed(*args, **opts)
@@ -16,6 +17,7 @@ module JewelSeed
       delete_ids = models.map(&:id).uniq.compact
       klass.delete_all(id: delete_ids)
       klass.import(*args, opts)
+      @seed_count += 1
     end
 
     def up

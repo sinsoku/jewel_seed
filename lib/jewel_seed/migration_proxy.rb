@@ -11,6 +11,7 @@ module JewelSeed
 
     def up
       migration.up
+      fail 'seed method not called' if migration.seed_count.zero?
 
       seed_migration = SeedMigration.create!(version: version)
       seed_migration_tables = migration.table_names.map do |t|

@@ -15,4 +15,14 @@ require 'jewel_seed/loader'
 module JewelSeed
   SEED_PATH = 'db/seeds'
   SEED_MIGRATE_PATH = 'db/seed_migrate'
+
+  delegate :migrate, :rollback, to: Migrator
+  delegate :dump, to: Dumper
+  delegate :load, to: Loader
+
+  class << self
+    def seed_tables
+      SeedMigrationTable.table_name
+    end
+  end
 end

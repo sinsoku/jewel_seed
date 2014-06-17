@@ -10,7 +10,7 @@ namespace :jseed do
     JewelSeed::Migrator.migrate
   end
 
-  desc 'Rollback seed files'
+  desc 'Rollback seed files. (options: STEP=n)'
   task rollback: :environment do
     JewelSeed::Migrator.rollback
   end

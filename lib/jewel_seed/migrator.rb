@@ -18,12 +18,9 @@ module JewelSeed
         SeedMigration.current_version.to_i
       end
 
-      def target_migrations
-        migrations.select { |m| m.version > current_version }
-      end
-
       def migrate
-        target_migrations.each do |migration|
+        targets = migrations.select { |m| m.version > current_version }.sort { |a, b| a.version <=> b.version }
+        targets.each do |migration|
           ActiveRecord::Base.transaction do
             migration.up
           end
@@ -31,10 +28,14 @@ module JewelSeed
       end
 
       def rollback
-        migration = migrations.find { |m| m.version == current_version }
+        step = ENV['STEP'].to_i
+        step = 1 if step.zero?
 
-        ActiveRecord::Base.transaction do
-          migration.down
+        targets = migrations.select { |m| m.version <= current_version }.sort { |a, b| b.version <=> a.version }.first(step)
+        targets.each do |migration|
+          ActiveRecord::Base.transaction do
+            migration.down
+          end
         end
       end
     end

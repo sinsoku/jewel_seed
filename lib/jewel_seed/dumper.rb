@@ -1,10 +1,19 @@
 module JewelSeed
   class Dumper
     class << self
+      def tables
+        only = ENV['ONLY'].split(',') unless ENV['ONLY'].nil?
+        except = ENV['EXCEPT'].split(',') unless ENV['EXCEPT'].nil?
+        @tables = SeedMigrationTable.table_names
+        @tables.select! { |x| only.include?(x) } unless only.nil?
+        @tables.reject! { |x| except.include?(x) } unless except.nil?
+        @tables
+      end
+
       def dump
         Dir.mkdir(SEED_PATH) unless File.exist?(SEED_PATH)
 
-        SeedMigrationTable.table_names.each do |t|
+        tables.each do |t|
           dump_table(t)
         end
       end

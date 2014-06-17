@@ -15,12 +15,12 @@ namespace :jseed do
     JewelSeed::Migrator.rollback
   end
 
-  desc 'Create db/seeds/*.rb files'
+  desc 'Create db/seeds/*.rb files. (options: ONLY=users,devices EXCEPT=cartridges)'
   task dump: :environment do
     JewelSeed::Dumper.dump
   end
 
-  desc 'Load db/seeds/*.rb files into the database'
+  desc 'Load db/seeds/*.rb files into the database (options: ONLY=users,devices EXCEPT=cartridges)'
   task load: :environment do
     JewelSeed::Loader.load
   end

@@ -22,7 +22,7 @@ module JewelSeed
 
   class << self
     def seed_tables
-      SeedMigrationTable.table_name
+      SeedMigrationTable.table_names
     end
   end
 end
